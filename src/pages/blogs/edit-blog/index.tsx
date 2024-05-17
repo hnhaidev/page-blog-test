@@ -9,13 +9,13 @@ import { itemsBreadcrumbEdit } from '../../../utils/constants/blog';
 const EditBlogPage = () => {
   const { id } = useParams();
 
-  const { data } = useGetBlogByIdQuery(id, { skip: !id });
+  const { data, isSuccess } = useGetBlogByIdQuery(id, { skip: !id });
 
   return (
     <div className="container">
       <Title>Edit</Title>
       <Breadcrumb items={itemsBreadcrumbEdit} />
-      {data ? <UpsertBlog item={data} /> : <BlogNotFound />}
+      {isSuccess ? <UpsertBlog item={data} /> : <BlogNotFound />}
     </div>
   );
 };

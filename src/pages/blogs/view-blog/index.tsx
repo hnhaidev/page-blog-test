@@ -10,7 +10,7 @@ import { BlogNotFound } from '../../../modules/blogs';
 const ViewBlogPage = () => {
   const { id } = useParams();
 
-  const { data, isFetching } = useGetBlogByIdQuery(id, { skip: !id });
+  const { data, isFetching, isSuccess } = useGetBlogByIdQuery(id, { skip: !id });
 
   return isFetching ? (
     <SpinnerPage />
@@ -22,7 +22,7 @@ const ViewBlogPage = () => {
         </Link>
       </div>
 
-      {data ? <DetailBlog data={data} /> : <BlogNotFound />}
+      {isSuccess ? <DetailBlog data={data} /> : <BlogNotFound />}
     </div>
   );
 };
