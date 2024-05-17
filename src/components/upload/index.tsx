@@ -31,8 +31,10 @@ const Upload: React.FC<UploadProps> = ({
           preview: URL.createObjectURL(files[0]),
         });
 
-        setFile(currentFile);
-        onChange?.(currentFile);
+        if (currentFile.type.startsWith('image/')) {
+          setFile(currentFile);
+          onChange?.(currentFile);
+        }
       }
     },
     [onChange],

@@ -17,10 +17,10 @@ export const UpsertBlog = ({ item }: { item?: TBlog }) => {
   const [editBlog, { isLoading: isLoadingEdit }] = useEditBlogMutation();
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Post title is required!'),
+    title: Yup.string().trim().required('Post title is required!'),
     content: Yup.string().required('Content is required!'),
     thumbnail: Yup.string().required('Thumbnail is required!'),
-    description: Yup.string(),
+    description: Yup.string().trim(),
   });
 
   const form = useForm<TBlogPost>({
